@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import AppRoutes from './routes';
+import { getAlbums } from './services/api';
+import VirtualScroll from './utils/VirtualScroll';
+import Album from './components/Album';
 
-function App() {
+const App = () => {
+  const [albums, setAlbums] = useState([]);
+
+  useEffect(() => {
+    getAlbums().then(setAlbums);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <AppRoutes />
+      <VirtualScroll
+        items={albums}
+        renderItem={(album) => album && <Album key={album.id} album={album} onClick={(id) => {}} />}
+        itemHeight={100}
+      />
     </div>
   );
-}
+};
 
 export default App;
