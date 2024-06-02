@@ -14,11 +14,11 @@ const App = () => {
   return (
     <div>
       <AppRoutes />
-      <VirtualScroll
+      {/* <VirtualScroll
         items={albums}
         renderItem={(album) => album && <Album key={album.id} album={album} onClick={(id) => {}} />}
         itemHeight={100}
-      />
+      /> */}
     </div>
   );
 };

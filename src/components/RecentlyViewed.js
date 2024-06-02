@@ -1,13 +1,21 @@
 import React from 'react';
 import Photo from './Photo';
+import { Grid, Container, Typography } from '@mui/material';
 
 const RecentlyViewed = ({ photos }) => {
   return (
-    <div>
-      {photos.map(photo => (
-        <Photo key={photo.id} photo={photo} onClick={() => {}} />
-      ))}
-    </div>
+    <Container>
+      <Typography variant="h5" gutterBottom>
+        Recently Viewed Photos
+      </Typography>
+      <Grid container spacing={2}>
+        {photos.map((photo) => (
+          <Grid item key={photo.id} xs={12} sm={6} md={4}>
+            <Photo photo={photo} onClick={() => {}} />
+          </Grid>
+        ))}
+      </Grid>
+    </Container>
   );
 };
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getPhoto } from '../services/api';
+import { Container, Typography } from '@mui/material';
 
 const PhotoDetail = ({ photoId }) => {
   const [photo, setPhoto] = useState(null);
@@ -11,10 +12,12 @@ const PhotoDetail = ({ photoId }) => {
   if (!photo) return null;
 
   return (
-    <div>
-      <img src={photo.url} alt={photo.title} />
-      <h2>{photo.title}</h2>
-    </div>
+    <Container>
+      <img src={photo.url} alt={photo.title} style={{ width: '100%' }} />
+      <Typography variant="h5" gutterBottom>
+        {photo.title}
+      </Typography>
+    </Container>
   );
 };
 
