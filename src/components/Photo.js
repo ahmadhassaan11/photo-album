@@ -1,7 +1,9 @@
 import React from 'react';
-import { Card, CardMedia, CardContent, Typography, CardActionArea, Dialog, DialogContent } from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActionArea, Dialog, DialogContent, IconButton, CardActions } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const Photo = ({ photo, onClick }) => {
+const Photo = ({ photo, onDelete, onEdit }) => {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -22,6 +24,14 @@ const Photo = ({ photo, onClick }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
+      <CardActions>
+        <IconButton onClick={onEdit} color="primary">
+          <EditIcon />
+        </IconButton>
+        <IconButton onClick={onDelete} color="secondary">
+          <DeleteIcon />
+        </IconButton>
+      </CardActions>
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <DialogContent>
           <img src={photo.url} alt={photo.title} style={{ width: '100%' }} />

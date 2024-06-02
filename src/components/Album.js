@@ -1,7 +1,9 @@
 import React from 'react';
-import { Card, CardContent, Typography, CardActionArea } from '@mui/material';
+import { Card, CardContent, Typography, CardActionArea, IconButton, CardActions } from '@mui/material';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const Album = ({ album, onClick }) => {
+const Album = ({ album, onClick, onEdit, onDelete }) => {
   if (!album) {
     return null;
   }
@@ -21,6 +23,14 @@ const Album = ({ album, onClick }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
+      <CardActions>
+        <IconButton onClick={onEdit} color="primary">
+          <EditIcon />
+        </IconButton>
+        <IconButton onClick={onDelete} color="secondary">
+          <DeleteIcon />
+        </IconButton>
+      </CardActions>
     </Card>
   );
 };

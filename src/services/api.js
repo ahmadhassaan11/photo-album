@@ -58,6 +58,12 @@ export const addPhotoToAlbum = async (albumId, photoData) => {
   return response.data;
 };
 
+// Update an existing photo
+export const updatePhoto = async (photoId, photoData) => {
+  const response = await axios.put(`${API_URL}/photos/${photoId}`, photoData);
+  return response.data;
+};
+
 // Remove a photo from an album
 export const removePhotoFromAlbum = async (photoId) => {
   await axios.delete(`${API_URL}/photos/${photoId}`);
