@@ -10,7 +10,7 @@ const Search = ({ onSearch }) => {
 
   return (
     <Container>
-      <Box display="flex" alignItems="center"> {/* Align items horizontally */}
+      <Box display="flex" alignItems="center" paddingTop="15px">
         <TextField
           fullWidth
           value={query}
