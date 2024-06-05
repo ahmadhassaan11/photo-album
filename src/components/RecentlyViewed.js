@@ -6,10 +6,19 @@ const RecentlyViewed = () => {
   const [photos, setPhotos] = useState([]);
 
   useEffect(() => {
+    const shuffleArray = (array) => {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    };
+
     const fetchPhotos = async () => {
       try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/photos?_limit=20');
-        setPhotos(response.data);
+        const fetchedPhotos = response.data;
+        shuffleArray(fetchedPhotos);
+        setPhotos(fetchedPhotos);
       } catch (error) {
         console.error('Error fetching photos:', error);
       }
